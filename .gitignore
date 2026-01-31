@@ -1,0 +1,115 @@
+# ============================================================================
+# .gitignore pour Projet Iris Classification
+# ============================================================================
+
+# ===== ENVIRONNEMENTS VIRTUELS =====
+iris_env/
+venv/
+env/
+ENV/
+.venv/
+*.egg-info/
+
+# ===== PYTHON =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg
+
+# ===== JUPYTER NOTEBOOK =====
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+*.ipynb_checkpoints
+
+# ===== IDEs =====
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ===== DONNÉES SENSIBLES =====
+*.env
+.env
+.env.local
+*.key
+*.pem
+
+# ===== LOGS =====
+*.log
+logs/
+*.out
+
+# ===== FICHIERS TEMPORAIRES =====
+*.tmp
+*.temp
+*.bak
+*.cache
+
+# ===== MODÈLES (OPTIONNEL - voir note ci-dessous) =====
+# Si vos modèles sont trop gros (>100MB), décommentez :
+# models/*.pkl
+# models/*.h5
+# models/*.joblib
+
+# MAIS GARDEZ les modèles si < 100MB pour que l'app fonctionne !
+
+# ===== DONNÉES (OPTIONNEL) =====
+# Si votre dataset est trop gros, décommentez :
+# data/*.csv
+# MAIS iris.csv est petit (5KB), donc on le garde !
+
+# ===== VISUALISATIONS (OPTIONNEL) =====
+# Si vous avez beaucoup d'images, décommentez :
+# visualizations/*.png
+# visualizations/*.jpg
+# MAIS les gardez pour la démo !
+
+# ===== TESTS =====
+.pytest_cache/
+.coverage
+htmlcov/
+*.cover
+
+# ===== SYSTÈME =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== AUTRES =====
+*.zip
+*.tar.gz
+*.rar
+```
+
+---
+
+## ⚠️ IMPORTANT : QUE GARDER / QUE NE PAS PUSH ?
+
+### ✅ **À GARDER dans Git (à push)** :
+```
+✅ data/iris.csv                    # Petit fichier (5KB)
+✅ models/*.pkl                     # Nécessaires pour l'app
+✅ visualizations/*.png             # Pour la démo
+✅ notebooks/*.ipynb                # Code source
+✅ flask_app/app.py                 # Code source
+✅ streamlit_app/dashboard.py       # Code source
+✅ requirements.txt                 # OBLIGATOIRE
+✅ README.md                        # Documentation
+✅ .gitignore                       # Ce fichier
+```
+
+### ❌ **À NE PAS PUSH (à ignorer)** :
+```
+❌ iris_env/                        # Environnement virtuel (GROS)
+❌ __pycache__/                     # Fichiers compilés Python
+❌ .ipynb_checkpoints/              # Sauvegardes Jupyter
+❌ .vscode/, .idea/                 # Configurations IDE
+❌ *.pyc, *.pyo                     # Fichiers compilés
+❌ .env                             # Variables d'environnement secrètes
