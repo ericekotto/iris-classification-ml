@@ -7,3 +7,4 @@ scikit-learn
 joblib
 python-dotenv
 altair>=5.0.0
+plotly
