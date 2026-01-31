@@ -65,9 +65,8 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Chemins des fichiers
-DATA_PATH = '../data/iris.csv'
-MODELS_PATH = '../models/'
-API_URL = 'http://127.0.0.1:5000'
+DATA_PATH = 'data/iris.csv'
+MODEL_PATH = 'models/iris_model.joblib'
 
 # Fonction pour charger les données
 @st.cache_data
