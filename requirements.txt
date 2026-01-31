@@ -1,10 +1,9 @@
+streamlit>=1.35.0
 pandas
 numpy
 matplotlib
 seaborn
 scikit-learn
-flask
-streamlit
-requests
 joblib
 python-dotenv
+altair>=5.0.0
