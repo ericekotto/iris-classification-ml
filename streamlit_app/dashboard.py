@@ -65,35 +65,37 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Chemins des fichiers
-DATA_PATH = 'data/Iris.csv'
-MODEL_PATH = 'models/iris_model.joblib'
-API_URL = 'http://127.0.0.1:5000'
+# --- À MODIFIER DANS dashboard.py ---
 
-# Fonction pour charger les données
+DATA_PATH = 'data/Iris.csv'  # Majuscule respectée
+MODELS_DIR = 'models'       # On définit le dossier des modèles
+
 @st.cache_data
 def load_data():
-    """Charge le dataset iris"""
     try:
-        df = pd.read_csv(DATA_PATH,sep=';')
+        # Utilisation du point-virgule comme vu dans ton fichier
+        df = pd.read_csv(DATA_PATH, sep=';') 
         return df
-    except FileNotFoundError:
-        st.error("❌ Fichier iris.csv non trouvé. Veuillez vérifier le chemin.")
+    except Exception as e:
+        st.error(f"❌ Erreur : {e}")
         return None
 
-# Fonction pour charger le modèle
 @st.cache_resource
 def load_model_and_scaler():
-    """Charge le modèle et le scaler"""
     try:
-        with open(os.path.join(MODELS_PATH, 'best_model.pkl'), 'rb') as f:
+        # On utilise os.path.join pour éviter les problèmes de /
+        # Vérifie que tes fichiers s'appellent bien ainsi dans le dossier models
+        model_path = os.path.join(MODELS_DIR, 'best_model.pkl')
+        scaler_path = os.path.join(MODELS_DIR, 'scaler.pkl')
+        
+        with open(model_path, 'rb') as f:
             model = pickle.load(f)
-        with open(os.path.join(MODELS_PATH, 'scaler.pkl'), 'rb') as f:
+        with open(scaler_path, 'rb') as f:
             scaler = pickle.load(f)
         return model, scaler
-    except FileNotFoundError:
-        st.warning("⚠️ Modèle non trouvé. Certaines fonctionnalités seront limitées.")
+    except Exception as e:
+        st.warning(f"⚠️ Modèle non trouvé : {e}")
         return None, None
-
 # Fonction pour faire une prédiction via l'API
 def predict_via_api(features):
     """Effectue une prédiction via l'API Flask"""
