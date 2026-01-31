@@ -647,7 +647,7 @@ def show_performance_page(df, model, scaler):
     
     # Charger les résultats de comparaison
     try:
-        results_df = pd.read_csv(os.path.join(MODELS_PATH, 'models_comparison.csv'))
+        results_df = pd.read_csv(os.path.join('models', 'models_comparison.csv'))
         
         st.markdown("### 🏆 Comparaison des modèles")
         st.dataframe(results_df.sort_values('Accuracy (%)', ascending=False), 
